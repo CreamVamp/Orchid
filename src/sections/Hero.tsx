@@ -59,11 +59,11 @@ export default function Hero() {
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between h-20 lg:h-24">
             <img
               src="/orchid-logo.png"
               alt="Orchid Cleaning & Maintenance LLC"
-              className="h-10 lg:h-12 w-auto"
+              className="h-14 lg:h-16 w-auto"
             />
             <div className="hidden md:flex items-center gap-6">
               <a

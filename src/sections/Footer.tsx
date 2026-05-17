@@ -46,7 +46,7 @@ export default function Footer() {
             <img
               src="/orchid-logo.png"
               alt="Orchid Cleaning & Maintenance LLC"
-              className="h-10 w-auto mb-4"
+              className="h-14 w-auto mb-4"
             />
             <p className="font-semibold text-base" style={{ color: '#1A1A1F' }}>
               Orchid Cleaning & Maintenance LLC
