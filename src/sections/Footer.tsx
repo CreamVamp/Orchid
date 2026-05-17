@@ -33,9 +33,6 @@ export default function Footer() {
     return () => ctx.revert();
   }, []);
 
-  const logoPurpleFilter =
-    'brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2576%) hue-rotate(244deg) brightness(98%) contrast(102%)';
-
   return (
     <footer
       ref={sectionRef}
@@ -50,7 +47,6 @@ export default function Footer() {
               src="/orchid-logo.png"
               alt="Orchid Cleaning & Maintenance LLC"
               className="h-10 w-auto mb-4"
-              style={{ filter: logoPurpleFilter }}
             />
             <p className="font-semibold text-base" style={{ color: '#1A1A1F' }}>
               Orchid Cleaning & Maintenance LLC

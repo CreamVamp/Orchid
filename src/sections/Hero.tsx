@@ -47,9 +47,6 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  const logoPurpleFilter =
-    'brightness(0) saturate(100%) invert(36%) sepia(98%) saturate(2576%) hue-rotate(244deg) brightness(98%) contrast(102%)';
-
   return (
     <div ref={heroRef} className="bg-white">
       {/* Fixed Header */}
@@ -67,7 +64,6 @@ export default function Hero() {
               src="/orchid-logo.png"
               alt="Orchid Cleaning & Maintenance LLC"
               className="h-10 lg:h-12 w-auto"
-              style={{ filter: logoPurpleFilter }}
             />
             <div className="hidden md:flex items-center gap-6">
               <a
