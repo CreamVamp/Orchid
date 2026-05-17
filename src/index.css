@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 14% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 14% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 14% 11%;
+    --primary: 258 95% 67%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 255 100% 97%;
+    --secondary-foreground: 258 95% 67%;
+    --muted: 255 100% 97%;
+    --muted-foreground: 245 7% 45%;
+    --accent: 255 100% 97%;
+    --accent-foreground: 258 95% 67%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 248 17% 92%;
+    --input: 248 17% 92%;
+    --ring: 258 95% 67%;
+    --radius: 0.5rem;
+
+    --brand-purple: #7C5DFB;
+    --brand-purple-hover: #6849E8;
+    --brand-purple-light: #EDE9FF;
+    --brand-purple-deep: #5A3FD9;
+    --bg-white: #FFFFFF;
+    --bg-lavender: #F8F6FF;
+    --text-primary: #1A1A1F;
+    --text-secondary: #6B6B7A;
+    --border-color: #E8E6F0;
+
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+    --shadow-card: 0 4px 24px rgba(124, 93, 251, 0.08);
+    --shadow-card-hover: 0 8px 32px rgba(124, 93, 251, 0.14);
+    --shadow-button: 0 4px 16px rgba(124, 93, 251, 0.2);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-white);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  ::selection {
+    background-color: rgba(124, 93, 251, 0.2);
+    color: var(--text-primary);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--brand-purple);
+  }
+
+  .text-brand {
+    color: var(--brand-purple);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .bg-lavender {
+    background-color: var(--bg-lavender);
+  }
+
+  .bg-white {
+    background-color: var(--bg-white);
+  }
+
+  .border-brand {
+    border-color: var(--border-color);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+}
