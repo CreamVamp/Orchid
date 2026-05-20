@@ -5,6 +5,9 @@ import { Check, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/** Inbox that receives walkthrough form submissions (FormSubmit delivers here). */
+const WALKTHROUGH_NOTIFICATION_EMAIL = 'orchidcleaningservices@outlook.com';
+
 const serviceOptions = [
   'Janitorial Services',
   'Biohazard Cleanup',
@@ -39,6 +42,12 @@ const bestTimeOptions = [
   'Anytime',
 ];
 
+function isFormSubmitSuccess(data: unknown): boolean {
+  if (!data || typeof data !== 'object') return false;
+  const s = (data as { success?: unknown }).success;
+  return s === true || s === 'true';
+}
+
 export default function WalkthroughForm() {
   const sectionRef = useRef<HTMLElement>(null);
   const eyebrowRef = useRef<HTMLSpanElement>(null);
@@ -51,6 +60,7 @@ export default function WalkthroughForm() {
   const [showFrequency, setShowFrequency] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -77,33 +87,61 @@ export default function WalkthroughForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitError(null);
 
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     formData.set('services', selectedServices.join(', '));
 
-    try {
-      const response = await fetch('https://formspree.io/f/xnqelwnk', {
-        method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
-      });
+    const payload: Record<string, string> = {
+      _subject: 'New walkthrough request — Orchid Cleaning website',
+      _template: 'table',
+    };
+    formData.forEach((value, key) => {
+      payload[key] = typeof value === 'string' ? value : value.name;
+    });
 
-      if (response.ok) {
+    try {
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${encodeURIComponent(WALKTHROUGH_NOTIFICATION_EMAIL)}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const data = (await response.json().catch(() => null)) as { success?: unknown; message?: string } | null;
+
+      if (response.ok && isFormSubmitSuccess(data)) {
         if (cardRef.current && confirmationRef.current) {
           gsap.to(cardRef.current, {
             opacity: 0, y: -20, duration: 0.5,
             onComplete: () => {
               setSubmitted(true);
+              setSubmitting(false);
               gsap.fromTo(confirmationRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
             },
           });
+        } else {
+          setSubmitted(true);
+          setSubmitting(false);
         }
       } else {
         setSubmitting(false);
+        setSubmitError(
+          data?.message?.trim() ||
+            'We could not send your request. Please email orchidcleaningservices@outlook.com or call 323-636-4771.'
+        );
       }
     } catch {
       setSubmitting(false);
+      setSubmitError(
+        'We could not send your request. Please email orchidcleaningservices@outlook.com or call 323-636-4771.'
+      );
     }
   };
 
@@ -339,6 +377,16 @@ export default function WalkthroughForm() {
                   onBlur={(e) => { e.currentTarget.style.borderColor = inputStyle.border; e.currentTarget.style.boxShadow = 'none'; }}
                 />
               </div>
+
+              {submitError ? (
+                <p
+                  className="text-sm rounded-lg px-4 py-3"
+                  style={{ backgroundColor: '#FFF0F0', border: '1px solid #F5C2C2', color: '#9B1C1C' }}
+                  role="alert"
+                >
+                  {submitError}
+                </p>
+              ) : null}
 
               {/* Submit */}
               <div className="pt-2">
