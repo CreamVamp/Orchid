@@ -5,8 +5,7 @@ import { Check, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/** Inbox that receives walkthrough form submissions (FormSubmit delivers here). */
-const WALKTHROUGH_NOTIFICATION_EMAIL = 'orchidcleaningservices@outlook.com';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeededno';
 
 const serviceOptions = [
   'Janitorial Services',
@@ -41,12 +40,6 @@ const bestTimeOptions = [
   'Evening',
   'Anytime',
 ];
-
-function isFormSubmitSuccess(data: unknown): boolean {
-  if (!data || typeof data !== 'object') return false;
-  const s = (data as { success?: unknown }).success;
-  return s === true || s === 'true';
-}
 
 export default function WalkthroughForm() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -93,30 +86,14 @@ export default function WalkthroughForm() {
     const formData = new FormData(form);
     formData.set('services', selectedServices.join(', '));
 
-    const payload: Record<string, string> = {
-      _subject: 'New walkthrough request — Orchid Cleaning website',
-      _template: 'table',
-    };
-    formData.forEach((value, key) => {
-      payload[key] = typeof value === 'string' ? value : value.name;
-    });
-
     try {
-      const response = await fetch(
-        `https://formsubmit.co/ajax/${encodeURIComponent(WALKTHROUGH_NOTIFICATION_EMAIL)}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
 
-      const data = (await response.json().catch(() => null)) as { success?: unknown; message?: string } | null;
-
-      if (response.ok && isFormSubmitSuccess(data)) {
+      if (response.ok) {
         if (cardRef.current && confirmationRef.current) {
           gsap.to(cardRef.current, {
             opacity: 0, y: -20, duration: 0.5,
@@ -131,9 +108,10 @@ export default function WalkthroughForm() {
           setSubmitting(false);
         }
       } else {
+        const data = await response.json().catch(() => null);
         setSubmitting(false);
         setSubmitError(
-          data?.message?.trim() ||
+          (data as { errors?: { message?: string }[] } | null)?.errors?.[0]?.message ||
             'We could not send your request. Please email orchidcleaningservices@outlook.com or call 323-636-4771.'
         );
       }
