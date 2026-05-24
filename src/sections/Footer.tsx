@@ -52,7 +52,7 @@ export default function Footer() {
               Orchid Cleaning & Maintenance LLC
             </p>
             <p className="text-sm mt-2" style={{ color: '#6B6B7A' }}>
-              Serving Los Angeles County.
+              Serving Los Angeles, Orange, Ventura, Riverside, San Bernardino, and San Diego Counties.
             </p>
           </div>
 
@@ -60,6 +60,9 @@ export default function Footer() {
           <div ref={col2Ref} style={{ opacity: 0 }}>
             <p className="eyebrow mb-4">— CONTACT</p>
             <div className="space-y-2">
+              <p className="text-sm" style={{ color: '#6B6B7A' }}>
+                Main Office — 6264 Ferguson Dr, Commerce, CA 90022
+              </p>
               <a
                 href="tel:323-636-4771"
                 className="block text-sm font-medium transition-colors duration-200 hover:underline"

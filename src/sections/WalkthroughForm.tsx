@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, Star } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeededno';
+const CONFETTI_COUNT = 10;
 
 const serviceOptions = [
   'Janitorial Services',
@@ -48,6 +49,11 @@ export default function WalkthroughForm() {
   const subheadRef = useRef<HTMLParagraphElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const confirmationRef = useRef<HTMLDivElement>(null);
+  const checkIconRef = useRef<HTMLDivElement>(null);
+  const confettiDotsRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const thankYouTitleRef = useRef<HTMLParagraphElement>(null);
+  const thankYouSubRef = useRef<HTMLParagraphElement>(null);
+  const reviewPromptRef = useRef<HTMLDivElement>(null);
 
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [showFrequency, setShowFrequency] = useState(false);
@@ -70,6 +76,63 @@ export default function WalkthroughForm() {
   useEffect(() => {
     setShowFrequency(selectedServices.includes('Janitorial Services'));
   }, [selectedServices]);
+
+  useEffect(() => {
+    if (!submitted) return;
+
+    const ctx = gsap.context(() => {
+      if (checkIconRef.current) {
+        gsap.set(checkIconRef.current, { scale: 0 });
+      }
+      if (thankYouTitleRef.current && thankYouSubRef.current && reviewPromptRef.current) {
+        gsap.set([thankYouTitleRef.current, thankYouSubRef.current, reviewPromptRef.current], {
+          opacity: 0,
+          y: 8,
+        });
+      }
+
+      confettiDotsRef.current.forEach((dot) => {
+        if (dot) gsap.set(dot, { opacity: 1, scale: 1, x: 0, y: 0 });
+      });
+
+      const tl = gsap.timeline({ delay: 0.15 });
+
+      if (checkIconRef.current) {
+        tl.to(checkIconRef.current, {
+          scale: 1.2,
+          duration: 0.3,
+          ease: 'back.out(2)',
+        }).to(checkIconRef.current, {
+          scale: 1,
+          duration: 0.3,
+          ease: 'back.out(2)',
+        });
+      }
+
+      confettiDotsRef.current.forEach((dot, i) => {
+        if (!dot) return;
+        const angle = (i / CONFETTI_COUNT) * Math.PI * 2;
+        const dist = 44 + (i % 3) * 6;
+        gsap.to(dot, {
+          x: Math.cos(angle) * dist,
+          y: Math.sin(angle) * dist,
+          opacity: 0,
+          scale: 0.2,
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: 0.15,
+        });
+      });
+
+      tl.to(
+        [thankYouTitleRef.current, thankYouSubRef.current],
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.08 },
+        '+=0.2'
+      ).to(reviewPromptRef.current, { opacity: 1, y: 0, duration: 0.4 });
+    }, confirmationRef);
+
+    return () => ctx.revert();
+  }, [submitted]);
 
   const toggleService = (service: string) => {
     setSelectedServices((prev) =>
@@ -178,18 +241,57 @@ export default function WalkthroughForm() {
             className="bg-white rounded-3xl p-10 lg:p-14 text-center"
             style={{ boxShadow: '0 4px 24px rgba(124, 93, 251, 0.08)', opacity: 0 }}
           >
-            <div
-              className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: '#EDE9FF' }}
-            >
-              <Check size={28} style={{ color: '#7C5DFB' }} />
+            <div className="relative mx-auto mb-6" style={{ width: 64, height: 64 }}>
+              {Array.from({ length: CONFETTI_COUNT }).map((_, i) => (
+                <span
+                  key={i}
+                  ref={(el) => { confettiDotsRef.current[i] = el; }}
+                  className="absolute left-1/2 top-1/2 pointer-events-none"
+                  style={{
+                    width: 8,
+                    height: 8,
+                    marginLeft: -4,
+                    marginTop: -4,
+                    borderRadius: '50%',
+                    backgroundColor: '#7C5DFB',
+                  }}
+                />
+              ))}
+              <div
+                ref={checkIconRef}
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto relative z-10"
+                style={{ backgroundColor: '#EDE9FF' }}
+              >
+                <Check size={28} style={{ color: '#7C5DFB' }} />
+              </div>
             </div>
-            <p className="font-bold text-xl" style={{ color: '#1A1A1F' }}>
+            <p ref={thankYouTitleRef} className="font-bold text-xl" style={{ color: '#1A1A1F' }}>
               Thank you!
             </p>
-            <p className="mt-3 leading-relaxed" style={{ fontSize: '16px', color: '#6B6B7A' }}>
+            <p ref={thankYouSubRef} className="mt-3 leading-relaxed" style={{ fontSize: '16px', color: '#6B6B7A' }}>
               We'll reach out within one business day to schedule your walkthrough.
             </p>
+            <div ref={reviewPromptRef} className="mt-8">
+              <hr
+                className="mx-auto border-0 border-t"
+                style={{ borderColor: '#E8E6F0', maxWidth: 240 }}
+              />
+              <p className="mt-6 text-center" style={{ fontSize: '14px', fontWeight: 500, color: '#6B6B7A' }}>
+                Already worked with us?
+              </p>
+              <div className="flex justify-center mt-4">
+                <a
+                  href="https://search.google.com/local/writereview?placeid=ChIJLWGEKnbPwoARGNgDNPlHMBY"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold border-2 transition-all duration-200 hover:bg-[#F8F6FF]"
+                  style={{ borderColor: '#7C5DFB', color: '#7C5DFB' }}
+                >
+                  <Star size={16} style={{ color: '#7C5DFB' }} />
+                  Leave us a Google review →
+                </a>
+              </div>
+            </div>
           </div>
         ) : (
           <div

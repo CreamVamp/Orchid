@@ -1,5 +1,6 @@
 import Hero from './sections/Hero';
 import TrustStrip from './sections/TrustStrip';
+import ServiceArea from './sections/ServiceArea';
 import Services from './sections/Services';
 import HowItWorks from './sections/HowItWorks';
 import Gallery from './sections/Gallery';
@@ -14,6 +15,7 @@ export default function App() {
     <div className="relative min-h-screen" style={{ backgroundColor: '#FFFFFF' }}>
       <Hero />
       <TrustStrip />
+      <ServiceArea />
       <Services />
       <HowItWorks />
       <Gallery />

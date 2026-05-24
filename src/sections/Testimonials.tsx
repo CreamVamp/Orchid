@@ -11,7 +11,7 @@ interface Testimonial {
   name: string;
   role: string;
   date: string;
-  initials: string;
+  headshot: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -21,31 +21,23 @@ const testimonials: Testimonial[] = [
     name: 'Maria G.',
     role: 'Property Manager, Downtown LA',
     date: 'January 2026',
-    initials: 'MG',
+    headshot: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80&fit=crop&crop=face',
   },
   {
     quote: "Called them at 11pm for a flood at one of our retail spaces. They had a crew on-site within 90 minutes. Saved us from what could've been a complete loss.",
-    highlight: "They had a crew on-site within 90 minutes.",
+    highlight: 'They had a crew on-site within 90 minutes.',
     name: 'David K.',
     role: 'Operations Manager, Retail Chain',
     date: 'November 2025',
-    initials: 'DK',
+    headshot: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80&fit=crop&crop=face',
   },
   {
-    quote: "We've cycled through three cleaning companies for our warehouses before finding Orchid. Two years in, no issues, no excuses. Their crews show up, do the work, and move on. That's all I want.",
-    highlight: "Two years in, no issues, no excuses.",
-    name: 'James R.',
-    role: 'Warehouse Director, Industrial Property',
-    date: 'October 2025',
-    initials: 'JR',
-  },
-  {
-    quote: "Section 8 inspections used to stress me out. Orchid preps the units so well that every unit has passed first inspection. That alone has saved us weeks of back-and-forth with HACLA.",
-    highlight: "every unit has passed first inspection.",
+    quote: 'Section 8 inspections used to stress me out. Orchid preps the units so well that every unit has passed first inspection. That alone has saved us weeks of back-and-forth with HACLA.',
+    highlight: 'every unit has passed first inspection.',
     name: 'Lisa M.',
     role: 'Multi-Unit Property Owner',
     date: 'December 2025',
-    initials: 'LM',
+    headshot: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200&q=80&fit=crop&crop=face',
   },
 ];
 
@@ -109,8 +101,8 @@ export default function Testimonials() {
           What our clients say.
         </h2>
 
-        {/* PLACEHOLDER TESTIMONIALS — Client will replace these with real customer quotes once collected. */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* TESTIMONIALS — Replace with real client testimonials once collected. Headshot URLs are Unsplash placeholders. */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {testimonials.map((t, index) => (
             <div
               key={index}
@@ -145,12 +137,13 @@ export default function Testimonials() {
               {/* Divider + Attribution */}
               <div className="border-t" style={{ borderColor: '#E8E6F0' }}>
                 <div className="flex items-center gap-3 pt-5">
-                  <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center font-semibold text-sm"
-                    style={{ backgroundColor: '#EDE9FF', color: '#7C5DFB' }}
-                  >
-                    {t.initials}
-                  </div>
+                  <img
+                    src={t.headshot}
+                    alt=""
+                    className="w-11 h-11 rounded-full object-cover flex-shrink-0"
+                    width={44}
+                    height={44}
+                  />
                   <div>
                     <p className="font-semibold text-sm" style={{ color: '#1A1A1F' }}>
                       {t.name}

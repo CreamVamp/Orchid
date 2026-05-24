@@ -111,7 +111,7 @@ export default function Hero() {
                 maxWidth: '520px',
               }}
             >
-              Commercial cleaning, maintenance, and emergency response across Los Angeles County. Licensed, insured, and on call 24/7.
+              Commercial cleaning, maintenance, and emergency response across Los Angeles, Orange, Ventura, Riverside, San Bernardino, and San Diego Counties. Licensed, insured, and on call 24/7.
             </p>
             <div className="hero-animate flex flex-wrap items-center gap-4 mt-8">
               <a

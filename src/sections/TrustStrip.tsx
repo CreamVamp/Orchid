@@ -45,7 +45,7 @@ export default function TrustStrip() {
             opacity: 0,
           }}
         >
-          Trusted by property managers, retail spaces, warehouses, and commercial buildings across LA County.
+          Trusted by property managers, retail spaces, warehouses, and commercial buildings across Los Angeles, Orange, Ventura, Riverside, San Bernardino, and San Diego Counties.
         </p>
       </div>
     </section>
