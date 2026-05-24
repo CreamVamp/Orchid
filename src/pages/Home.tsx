@@ -1,20 +1,29 @@
-import { useState } from 'react'
-import '../App.css'
+import Hero from '../sections/Hero';
+import TrustStrip from '../sections/TrustStrip';
+import ServiceArea from '../sections/ServiceArea';
+import Services from '../sections/Services';
+import HowItWorks from '../sections/HowItWorks';
+import Gallery from '../sections/Gallery';
+import WhyOrchid from '../sections/WhyOrchid';
+import Testimonials from '../sections/Testimonials';
+import WalkthroughForm from '../sections/WalkthroughForm';
+import Footer from '../sections/Footer';
+import FloatingCTA from '../sections/FloatingCTA';
 
 export default function Home() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-    </>
-  )
+    <div className="relative min-h-screen" style={{ backgroundColor: '#FFFFFF' }}>
+      <Hero />
+      <TrustStrip />
+      <ServiceArea />
+      <Services />
+      <HowItWorks />
+      <Gallery />
+      <WhyOrchid />
+      <Testimonials />
+      <WalkthroughForm />
+      <Footer />
+      <FloatingCTA />
+    </div>
+  );
 }

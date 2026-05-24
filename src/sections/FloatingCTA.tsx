@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
+    if (!isHome) return;
+
     const handleScroll = () => {
       const heroHeight = window.innerHeight * 0.6;
       setVisible(window.scrollY > heroHeight);
@@ -32,13 +38,19 @@ export default function FloatingCTA() {
       window.removeEventListener('scroll', handleScroll);
       if (observer && formEl) observer.unobserve(formEl);
     };
-  }, []);
+  }, [isHome]);
 
-  const show = visible && !formVisible;
+  const show = isHome ? visible && !formVisible : true;
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate('/#walkthrough');
+  };
 
   return (
     <a
-      href="#walkthrough"
+      href="/#walkthrough"
+      onClick={handleClick}
       className="fixed bottom-5 right-5 lg:bottom-8 lg:right-8 z-50 inline-flex items-center gap-2 px-6 py-3.5 bg-brand text-white text-sm font-semibold rounded-full transition-all duration-300 hover:bg-brand-hover animate-pulse-soft"
       style={{
         opacity: show ? 1 : 0,
