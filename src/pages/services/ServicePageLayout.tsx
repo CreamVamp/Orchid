@@ -493,7 +493,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
           </div>
         </section>
 
-        {/* Section 8: Related Services */}
+        {/* Related Services */}
         <section style={{ padding: 'clamp(80px, 10vw, 120px) 0' }}>
           <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20">
             <SectionReveal>
@@ -512,7 +512,13 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
                 Other services that pair well with this.
               </h3>
             </SectionReveal>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              className={`grid grid-cols-1 gap-6 ${
+                data.relatedServices.length === 2
+                  ? 'md:grid-cols-2 md:max-w-[800px]'
+                  : 'md:grid-cols-3'
+              }`}
+            >
               {data.relatedServices.map((service) => {
                 const ServiceIcon = service.icon;
                 return (

@@ -12,7 +12,7 @@ const galleryImages = [
   { src: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80', label: 'Warehouse — Commerce' },
   { src: 'https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?w=600&q=80', label: 'Lobby Cleaning — Century City' },
   { src: 'https://images.unsplash.com/photo-1581578017093-cd30fce4eeb7?w=600&q=80', label: 'Retail Space — Pasadena' },
-  { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', label: 'Section 8 Turnover — Compton' },
+  { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', label: 'Apartment Cleanout — Compton' },
   { src: 'https://images.unsplash.com/photo-1604762524889-3e2fcc145683?w=600&q=80', label: 'Commercial Exterior — Burbank' },
 ];
 

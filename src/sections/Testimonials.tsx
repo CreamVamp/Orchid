@@ -16,7 +16,7 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quote: "We've used Orchid for our four-building portfolio for the past 18 months. They handle the recurring janitorial and any emergency calls without fail. I've never had to follow up on a job.",
+    quote: "We've used Orchid for our four-building portfolio for the past 18 months. They handle the recurring janitorial without fail. I've never had to follow up on a job.",
     highlight: "I've never had to follow up on a job.",
     name: 'Maria G.',
     role: 'Property Manager, Downtown LA',
@@ -24,16 +24,16 @@ const testimonials: Testimonial[] = [
     headshot: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80&fit=crop&crop=face',
   },
   {
-    quote: "Called them at 11pm for a flood at one of our retail spaces. They had a crew on-site within 90 minutes. Saved us from what could've been a complete loss.",
-    highlight: 'They had a crew on-site within 90 minutes.',
+    quote: "We booked pressure washing for a retail plaza that had years of buildup. They had a crew on-site the next day. Saved us from what could've been a messy first impression.",
+    highlight: 'They had a crew on-site the next day.',
     name: 'David K.',
     role: 'Operations Manager, Retail Chain',
     date: 'November 2025',
     headshot: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80&fit=crop&crop=face',
   },
   {
-    quote: 'Section 8 inspections used to stress me out. Orchid preps the units so well that every unit has passed first inspection. That alone has saved us weeks of back-and-forth with HACLA.',
-    highlight: 'every unit has passed first inspection.',
+    quote: 'Unit turnovers used to stress me out. Orchid hauls the debris and leaves the spaces so clean that every unit is ready for the next tenant. That alone has saved us weeks of delay.',
+    highlight: 'every unit is ready for the next tenant.',
     name: 'Lisa M.',
     role: 'Multi-Unit Property Owner',
     date: 'December 2025',

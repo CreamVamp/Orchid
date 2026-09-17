@@ -4,13 +4,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Sparkles,
-  ShieldAlert,
   Trash2,
   Droplets,
-  Droplet,
-  Wrench,
-  KeyRound,
-  Clock,
   ArrowRight,
 } from 'lucide-react';
 
@@ -31,12 +26,6 @@ const services: Service[] = [
     route: '/services/janitorial',
   },
   {
-    title: 'Biohazard Cleanup',
-    description: 'Trained, certified, and discreet. We handle the calls nobody else wants to take, and we don\'t ask questions.',
-    icon: ShieldAlert,
-    route: '/services/biohazard',
-  },
-  {
     title: 'Junk Removal',
     description: 'Old furniture, construction debris, that thing you\'ve been meaning to throw out for two years. We haul it. You don\'t think about it ever again.',
     icon: Trash2,
@@ -47,30 +36,6 @@ const services: Service[] = [
     description: 'Driveways, sidewalks, building exteriors, parking structures. If grime has settled into it, we can lift it off without damaging the surface underneath.',
     icon: Droplets,
     route: '/services/pressure-washing',
-  },
-  {
-    title: 'Maintenance & Repairs',
-    description: 'Plumbing fixes, drywall patches, lighting, the small stuff that adds up if you ignore it. One call instead of three vendors.',
-    icon: Wrench,
-    route: '/services/maintenance-repairs',
-  },
-  {
-    title: 'Apartment Move-In / Section 8 Inspection Ready',
-    description: 'We\'ve prepped enough units for HACLA inspection to know exactly what they look for. First-time pass, every time.',
-    icon: KeyRound,
-    route: '/services/move-in-section-8',
-  },
-  {
-    title: '24/7 Emergency Services',
-    description: 'Floods, after-hours spills, urgent calls when something goes wrong at 2am. We pick up. We show up. We clean up.',
-    icon: Clock,
-    route: '/services/emergency-services',
-  },
-  {
-    title: 'Emergency Plumbing Response',
-    description: 'Burst pipes, backed-up drains, leaks that can\'t wait until morning. We respond, coordinate, and resolve — fast.',
-    icon: Droplet,
-    route: '/services/emergency-plumbing',
   },
 ];
 
@@ -133,10 +98,10 @@ export default function Services() {
             opacity: 0,
           }}
         >
-          Eight services. One standard. From scheduled janitorial programs to after-hours emergencies, every job is handled by trained crews and accountable to a single point of contact.
+          Three services. One standard. From scheduled janitorial programs to junk removal and pressure washing, every job is handled by trained crews and accountable to a single point of contact.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (

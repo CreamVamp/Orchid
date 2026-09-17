@@ -6,12 +6,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const serviceLinks = [
   'Janitorial Services',
-  'Biohazard Cleanup',
   'Junk Removal',
   'Pressure Washing',
-  'Maintenance & Repairs',
-  'Apartment Move-In / Section 8 Inspection Ready',
-  '24/7 Emergency Services',
 ];
 
 export default function Footer() {

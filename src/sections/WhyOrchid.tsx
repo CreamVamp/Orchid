@@ -12,7 +12,7 @@ const features = [
   },
   {
     icon: Phone,
-    title: 'Same-day emergency callouts across LA County.',
+    title: 'Free walkthroughs with written estimates in 24 hours.',
   },
   {
     icon: User,

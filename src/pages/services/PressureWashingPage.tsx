@@ -1,7 +1,6 @@
 import {
   Droplets,
   Trash2,
-  Wrench,
   Sparkles,
   ClipboardCheck,
   Shield,
@@ -85,12 +84,6 @@ const data: ServicePageData = {
       name: 'Janitorial Services',
       description: 'Recurring cleaning for offices, retail, and multi-unit properties.',
       href: '/services/janitorial',
-    },
-    {
-      icon: Wrench,
-      name: 'Maintenance & Repairs',
-      description: 'Light repairs and ongoing property upkeep.',
-      href: '/services/maintenance-repairs',
     },
     {
       icon: Trash2,

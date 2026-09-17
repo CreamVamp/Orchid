@@ -1,8 +1,7 @@
 import {
   Trash2,
   Droplets,
-  Wrench,
-  KeyRound,
+  Sparkles,
   ClipboardCheck,
   Calendar,
   Truck,
@@ -24,7 +23,7 @@ const data: ServicePageData = {
   overviewParagraphs: [
     "Junk removal sounds simple until you're staring at a warehouse full of old shelving units or an apartment with three tenants' worth of abandoned furniture. We've handled both, and everything in between.",
     "We do the full haul-out — no need to drag anything to the curb. Our crew carries, loads, and removes it all. Then we sort it: donation for what's usable, recycling for what isn't, landfill only as a last resort. You don't have to think about where it goes.",
-    "Same-day service is available across LA County when the situation is urgent — post-tenant turnovers, pre-inspection cleanouts, renovation debris that can't sit. We price by volume and scope, not by the mystery-hour. You'll know exactly what it costs before we start.",
+    "Same-day service is available across LA County when the situation is urgent — office cleanouts, post-tenant debris, renovation waste that can't sit. We price by volume and scope, not by the mystery-hour. You'll know exactly what it costs before we start.",
   ],
   overviewImage: 'https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=900&q=80',
   whoTags: [
@@ -60,7 +59,7 @@ const data: ServicePageData = {
       icon: Calendar,
       title: 'Schedule',
       description:
-        'Same-day or scheduled at your convenience. We work around tenant move-outs, construction timelines, and inspection deadlines.',
+        'Same-day or scheduled at your convenience. We work around tenant move-outs, construction timelines, and your occupancy dates.',
     },
     {
       number: '03',
@@ -79,22 +78,16 @@ const data: ServicePageData = {
   ],
   relatedServices: [
     {
+      icon: Sparkles,
+      name: 'Janitorial Services',
+      description: 'Recurring cleaning for offices, retail, and multi-unit properties.',
+      href: '/services/janitorial',
+    },
+    {
       icon: Droplets,
       name: 'Pressure Washing',
       description: 'Exterior cleaning for sidewalks, driveways, and building facades.',
       href: '/services/pressure-washing',
-    },
-    {
-      icon: Wrench,
-      name: 'Maintenance & Repairs',
-      description: 'Light repairs and ongoing property upkeep.',
-      href: '/services/maintenance-repairs',
-    },
-    {
-      icon: KeyRound,
-      name: 'Section 8 & Move-In Turnovers',
-      description: 'Inspection-ready unit prep for HACLA and private landlords.',
-      href: '/services/move-in-section-8',
     },
   ],
   schemaDescription:
