@@ -11,7 +11,7 @@ import ServicePageLayout from './ServicePageLayout';
 import type { ServicePageData } from './ServicePageLayout';
 
 const data: ServicePageData = {
-  title: 'Commercial Pressure Washing | Orchid Cleaning & Maintenance LLC',
+  title: 'Commercial Pressure Washing | Orchid Cleaning LLC',
   metaDescription:
     'Commercial pressure washing across Southern California. Building exteriors, parking lots, sidewalks, driveways, and loading docks. Surface-safe techniques. Free estimate.',
   h1: 'Commercial Pressure Washing.',

@@ -41,11 +41,11 @@ export default function Footer() {
           <div ref={col1Ref} style={{ opacity: 0 }}>
             <img
               src="/orchid-logo.png"
-              alt="Orchid Cleaning & Maintenance LLC"
+              alt="Orchid Cleaning LLC"
               className="h-14 w-auto mb-4"
             />
             <p className="font-semibold text-base" style={{ color: '#1A1A1F' }}>
-              Orchid Cleaning & Maintenance LLC
+              Orchid Cleaning LLC
             </p>
             <p className="text-sm mt-2" style={{ color: '#6B6B7A' }}>
               Serving Los Angeles, Orange, Ventura, Riverside, San Bernardino, and San Diego Counties.
@@ -103,7 +103,7 @@ export default function Footer() {
           style={{ borderColor: '#E8E6F0', opacity: 0 }}
         >
           <p className="text-xs" style={{ color: '#6B6B7A' }}>
-            &copy; 2026 Orchid Cleaning & Maintenance LLC
+            &copy; 2026 Orchid Cleaning LLC
           </p>
           <p className="text-xs mt-1 sm:mt-0" style={{ color: '#6B6B7A' }}>
             Licensed & Insured

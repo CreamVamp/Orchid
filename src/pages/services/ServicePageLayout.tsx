@@ -135,7 +135,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
     description: data.schemaDescription,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'Orchid Cleaning & Maintenance LLC',
+      name: 'Orchid Cleaning LLC',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Commerce',
@@ -177,7 +177,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
               <Link to="/" className="flex items-center">
                 <img
                   src="/orchid-logo.png"
-                  alt="Orchid Cleaning & Maintenance LLC"
+                  alt="Orchid Cleaning LLC"
                   className="h-9 w-auto"
                   style={{ filter: logoPurpleFilter }}
                 />

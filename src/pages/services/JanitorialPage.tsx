@@ -11,7 +11,7 @@ import ServicePageLayout from './ServicePageLayout';
 import type { ServicePageData } from './ServicePageLayout';
 
 const data: ServicePageData = {
-  title: 'Commercial Janitorial Services | Orchid Cleaning & Maintenance LLC',
+  title: 'Commercial Janitorial Services | Orchid Cleaning LLC',
   metaDescription:
     'Commercial janitorial services across Southern California. Daily, weekly, or monthly cleaning for offices, retail, warehouses, and multi-unit properties. Free walkthrough.',
   h1: 'Commercial Janitorial Services.',

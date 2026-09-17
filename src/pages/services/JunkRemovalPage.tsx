@@ -11,7 +11,7 @@ import ServicePageLayout from './ServicePageLayout';
 import type { ServicePageData } from './ServicePageLayout';
 
 const data: ServicePageData = {
-  title: 'Junk Removal & Haul-Off | Orchid Cleaning & Maintenance LLC',
+  title: 'Junk Removal & Haul-Off | Orchid Cleaning LLC',
   metaDescription:
     'Full-service junk removal and haul-off across Southern California. Furniture, debris, construction waste, and tenant cleanouts. Same-day service available. Free estimate.',
   h1: 'Junk Removal & Haul-Off.',

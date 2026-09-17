@@ -62,7 +62,7 @@ export default function Hero() {
           <div className="flex items-center justify-between h-20 lg:h-24">
             <img
               src="/orchid-logo.png"
-              alt="Orchid Cleaning & Maintenance LLC"
+              alt="Orchid Cleaning LLC"
               className="h-14 lg:h-16 w-auto"
             />
             <div className="hidden md:flex items-center gap-6">
